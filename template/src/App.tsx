@@ -1,22 +1,33 @@
-import * as React from 'react';
-import './App.css';
+import * as React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Jumbotron } from "reactstrap";
+import { Layout } from "./Layout";
 
-import logo from './logo.svg';
+// import { Provider } from "react-redux";
+// import store from "./store";
 
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
+      // <Provider store={store}>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route path="/" exact component={PlaceHolder} />
+          </Switch>
+        </Layout>
+      </Router>
+      // </Provider>
     );
   }
 }
+
+const PlaceHolder = () => {
+  return (
+    <Jumbotron>
+      <h1 className="display-3">Hello, world!</h1>
+    </Jumbotron>
+  );
+};
 
 export default App;
